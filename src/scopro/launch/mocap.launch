@@ -1,0 +1,11 @@
+<launch>
+
+    <!-- 
+    <node name="mocap_node" pkg="scopro" type="mocap.py" output="screen">
+         <rosparam command="load" file="$(arg mocap_conf_path)"/>
+    </node>
+    -->
+    <node name="mocap_node" pkg="scopro" type="mocap_client.py" output="screen">
+    </node>
+ 
+</launch>

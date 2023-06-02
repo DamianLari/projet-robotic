@@ -1,0 +1,32 @@
+<launch>
+    <arg name="folder_path" default="jaguataset"/>
+    <arg name="todo" default="calib"/>
+    <arg name="calibration_file" default="CalibData.json"/>
+    <arg name="frequency" default="1" />
+    <arg name="img_format" default=".jpg" />
+    <arg name="square_size" default="0.05" />
+    <arg name="number_rows" default="7" />
+    <arg name="number_cols" default="5" />
+    <!--
+    <node name="elstart" pkg="scopro" type="elstart.py" output="screen">
+        <param name="calibration_file" value="$(arg calibration_file)" />
+        <param name="dataset" value="$(arg dataset_path)" />
+        <param name="dataset" value="$(arg dataset_path)" />
+    </node>
+    -->
+    <node name="image_publisher" pkg="scopro" type="Convertion.py" output="screen">
+        <param name="frequency" value="$(arg frequency)" />
+        <param name="img_format" value="$(arg img_format)" />
+        <param name="folder" value="$(arg folder_path)" />
+        <param name="todo" value="$(arg todo)" />
+    </node>
+
+    <node name="camera_calibration" pkg="scopro" type="Calibration.py" output="screen">
+        <param name="square_size" value="$(arg square_size)" />
+        <param name="number_rows" value="$(arg number_rows)" />
+        <param name="number_cols" value="$(arg number_cols)" />
+        <param name="calibration_file" value="$(arg calibration_file)" />
+    </node>
+
+
+</launch>

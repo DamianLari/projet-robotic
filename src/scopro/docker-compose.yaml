@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  projet1:
+    build: 
+      context: ./projet1
+      dockerfile: Dockerfile
+    volumes:
+      - ./projet1:/scopro_ws
+    environment:
+      - ROS_MASTER_URI=http://projet2:11311
+  projet2:
+    build: 
+      context: ./projet2
+      dockerfile: Dockerfile
+    volumes:
+      - ./projet2:/catkin_ws
